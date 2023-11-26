@@ -1,7 +1,35 @@
-import Home from './src/components/pages/Home';
+import { StyleSheet, SafeAreaView } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+
+import ImageDetails from "./src/components/molecules/ImageDetails";
+import Home from "./src/components/pages/Home";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-      <Home />
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "rgba(7,26,93,255)",
+            },
+            headerTintColor: "#fff",
+          }}>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Details" component={ImageDetails} />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "rgba(7,26,93,255)",
+  },
+});
