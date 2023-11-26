@@ -1,9 +1,11 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import TextAtom from "../atoms/TextAtom";
 import ButtonAtom from "../atoms/ButtonAtom";
 
 export default function LastFiveDaysImages({ LastFiveDaysImages }) {
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
@@ -16,6 +18,7 @@ export default function LastFiveDaysImages({ LastFiveDaysImages }) {
                             <TextAtom text={imageData.date} style={styles.dataDate} />
                             <ButtonAtom
                                 title="View"
+                                onPress={() => navigation.navigate("Details", { imageData })}
                                 style={styles.button}
                             />
                         </View>
